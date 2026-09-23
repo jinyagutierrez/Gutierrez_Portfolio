@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Jinya Gutierrez — IT Student &amp; Developer</title>
+<meta name="description" content="Portfolio of Jinya Marray Gutierrez — BS Information Technology student specializing in Web and Mobile Applications at FEU Alabang.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<script>
+  (function(){
+    try {
+      var saved = localStorage.getItem('theme');
+      if (saved === 'light' || saved === 'dark') {
+        document.documentElement.setAttribute('data-theme', saved);
+      }
+    } catch(e) {}
+  })();
+</script>
+</head>
+<body>
+
+<div class="ruler"><div class="ruler-fill" id="rulerFill"></div></div>
+
+<header class="site">
+  <nav class="wrap">
+    <a href="#top" class="brand"><span class="brand-mark">JG</span><span class="brand-name">Jinya Gutierrez</span></a>
+    <ul class="navlinks">
+      <li><a href="#about">About</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#certifications">Certifications</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <button type="button" class="theme-toggle" id="themeToggle" aria-label="Switch to dark mode" aria-pressed="false">
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.6M12 18.9v2.6M4.2 4.2l1.8 1.8M18 18l1.8 1.8M2.5 12h2.6M18.9 12h2.6M4.2 19.8L6 18M18 6l1.8-1.8"/></svg>
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a6.8 6.8 0 0 0 10.5 10.5z"/></svg>
+    </button>
+  </nav>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero wrap" id="heroSection">
+    <div class="hero-spot" id="heroSpot" aria-hidden="true"></div>
+    <div class="hero-grid">
+      <div class="hero-text">
+        <span class="kicker">Open to internships &amp; junior roles</span>
+        <h1 class="name">Jinya Marray Gutierrez</h1>
+        <p class="role-line" id="roleLine" aria-hidden="true"><span id="roleText"></span><span class="caret"></span></p>
+        <p class="lede">IT student at FEU Alabang building web and mobile products end to end — wireframes, interfaces, and the backend that runs them.</p>
+        <div class="hero-actions">
+          <a href="#projects" class="btn btn-fill magnetic">See my work</a>
+          <a href="#contact" class="btn btn-line magnetic">Get in touch</a>
+        </div>
+        <dl class="hero-stats">
+          <div><dt>8</dt><dd>Projects</dd></div>
+          <div><dt>9</dt><dd>Credentials</dd></div>
+          <div><dt>4th yr.</dt><dd>IT student</dd></div>
+        </dl>
+      </div>
+      <div class="hero-photo">
+        <img src="assets/jinya-portrait.jpg" alt="Portrait of Jinya Marray Gutierrez" width="480" height="480">
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" style="--accent:var(--teal); --accent-deep:var(--teal-deep);">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow"><i>01</i>About</span>
+        <h2>A bit about me</h2>
+      </div>
+      <div class="about-grid">
+        <div class="about-copy">
+          <p>I'm a fourth-year Information Technology student specializing in Web and Mobile Application Development. Most of what I know comes from building things — a capstone mobile app, freelance client sites, and a lot of trial and error with Firebase and WordPress along the way.</p>
+          <p>I like the parts of a project other people skip: writing the research that justifies a design decision, sketching the wireframe before touching code, and cleaning up the data underneath it all. I'm still early in my career, and genuinely looking for a team where I can keep learning.</p>
+        </div>
+
+        <div class="card infocard">
+          <h3 class="card-label">Quick facts</h3>
+          <dl>
+            <dt>Based in</dt><dd>Muntinlupa City, Philippines</dd>
+            <dt>Studying</dt><dd>BS Information Technology — Web &amp; Mobile Applications</dd>
+            <dt>School</dt><dd>Far Eastern University — Alabang</dd>
+            <dt>Status</dt><dd>4th year, expected graduation 2027</dd>
+            <dt>Senior High</dt><dd>STEM, APEC Schools Sta. Rita — 2022</dd>
+          </dl>
+        </div>
+
+        <div class="card infocard">
+          <h3 class="card-label">Involvement</h3>
+          <dl>
+            <dt>Organizations</dt><dd></dd>
+            <dd>Google Developer Student Clubs — Member, 2023–2026</dd><dd></dd>
+            <dd>Junior Philippine Computer Society — Member, 2026–Present</dd>
+          </dl>
+          <h4 class="card-sublabel">Outside of school</h4>
+          <div class="chips">
+            <span class="chip">Branding &amp; Logo Design</span>
+            <span class="chip">Content Creation</span>
+            <span class="chip">Reading — self-help books</span>
+            <span class="chip">Walking</span>
+            <span class="chip">Cooking &amp; meal prep</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience" style="--accent:var(--coral); --accent-deep:var(--coral);">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow"><i>02</i>Experience</span>
+        <h2>Where I've worked</h2>
+      </div>
+
+      <div class="terminal">
+        <div class="term-bar"><span></span><span></span><span></span><p class="term-path">~/experience</p></div>
+        <div class="term-body">
+
+          <div class="term-entry">
+            <p class="term-prompt">cd baylo/capstone</p>
+            <p class="term-role">Capstone Project Developer &amp; Researcher</p>
+            <p class="term-org">Baylo — Student project</p>
+            <ul>
+              <li>Designed UI/UX wireframes and interfaces for the mobile app, and built backend features in Firebase — authentication, real-time chat, and data storage.</li>
+              <li>Led survey design and evaluation using the ISO/IEC 25010 quality framework; the platform was rated 4.89/5 by 100 respondents.</li>
+              <li>Worked in a 4-person team using Agile.</li>
+            </ul>
+          </div>
+
+          <div class="term-entry">
+            <p class="term-prompt">cd freelance/sproutify</p>
+            <p class="term-role">WordPress &amp; WooCommerce Developer</p>
+            <p class="term-org">Freelance — Sproutify, Client project</p>
+            <ul>
+              <li>Built an e-commerce website prototype for a client's plants and gardening business, including a product catalogue and checkout flow.</li>
+              <li>Customized the WordPress/WooCommerce theme to match the client's branding.</li>
+            </ul>
+          </div>
+
+          <div class="term-entry">
+            <p class="term-prompt">cd freelance/veeva</p>
+            <p class="term-role">Data Encoder</p>
+            <p class="term-org">Freelance — Veeva, Part-time</p>
+            <ul>
+              <li>Handled freelance data encoding and entry work, ensuring accuracy and confidentiality of client information.</li>
+            </ul>
+          </div>
+
+          <div class="term-entry">
+            <p class="term-prompt">cd cobb-home/admin</p>
+            <p class="term-role">Administrative Trainee</p>
+            <p class="term-org">LJB Corp — Adult Residential Facility, Cobb Home, San Francisco, USA</p>
+            <ul>
+              <li>Completed on-site administration training covering filing, records management, and client documentation.</li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills" style="--accent:var(--amber); --accent-deep:var(--amber);">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow"><i>03</i>Skills</span>
+        <h2>What I work with</h2>
+      </div>
+      <div class="skill-groups">
+        <div class="card skill-group">
+          <h3>Languages</h3>
+          <div class="chips">
+            <span class="chip">HTML &amp; CSS</span>
+          </div>
+        </div>
+        <div class="card skill-group">
+          <h3>Platforms &amp; tools</h3>
+          <div class="chips">
+            <span class="chip">Android Studio</span>
+            <span class="chip">Firebase</span>
+            <span class="chip">SQLite</span>
+            <span class="chip">WordPress &amp; WooCommerce</span>
+            <span class="chip">Canva</span>
+          </div>
+        </div>
+        <div class="card skill-group">
+          <h3>Design &amp; research</h3>
+          <div class="chips">
+            <span class="chip">UI/UX Design</span>
+            <span class="chip">Wireframing</span>
+            <span class="chip">Research &amp; Documentation</span>
+          </div>
+        </div>
+        <div class="card skill-group">
+          <h3>Working style</h3>
+          <div class="chips">
+            <span class="chip">Time Management</span>
+            <span class="chip">Attention to Detail</span>
+            <span class="chip">Teamwork &amp; Collaboration</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects" style="--accent:var(--teal); --accent-deep:var(--teal-deep);">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow"><i>04</i>Projects</span>
+        <h2>Accomplished projects</h2>
+        <p class="section-sub">A mix of capstone research, freelance client work, and design pieces from coursework and hackathons.</p>
+      </div>
+
+      <div class="proj-grid" id="projGrid"></div>
+    </div>
+  </section>
+
+  <!-- CERTIFICATIONS -->
+  <section id="certifications" style="--accent:var(--coral); --accent-deep:var(--coral);">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow"><i>05</i>Certifications</span>
+        <h2>Awards &amp; certifications</h2>
+        <p class="section-sub"><span id="certCount">9</span> credentials earned across academics, technical training, and events — tap any card to view it up close.</p>
+      </div>
+      <div class="cert-filters" id="certFilters"></div>
+      <div class="cert-grid" id="certGrid"></div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" style="--accent:var(--amber); --accent-deep:var(--amber);">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow"><i>06</i>Contact</span>
+      </div>
+      <div class="contact-card">
+        <div>
+          <h2>Let's talk</h2>
+          <p>Open to internship and entry-level opportunities in web or mobile development.</p>
+        </div>
+        <div class="contact-links">
+          <a href="mailto:jinyajm03@gmail.com"><span class="tag-mono">mail</span>jinyajm03@gmail.com</a>
+          <a href="tel:+639158852303"><span class="tag-mono">tel</span>0915 885 2303</a>
+          <a href="https://github.com/jinyagutierrez" target="_blank" rel="noopener"><span class="tag-mono">gh</span>github.com/jinyagutierrez</a>
+          <a href="https://www.linkedin.com/in/jinya-gutierrez-905516321/" target="_blank" rel="noopener"><span class="tag-mono">in</span>linkedin.com/in/jinya-gutierrez</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  © 2026 Jinya Marray Gutierrez. Built with HTML, CSS &amp; JS.
+</footer>
+
+<!-- Project gallery modal -->
+<div class="lightbox" id="projModal" role="dialog" aria-modal="true" aria-labelledby="pmTitle">
+  <div class="lightbox-panel pm-panel">
+    <button class="lightbox-close" id="pmClose" aria-label="Close">✕</button>
+    <div class="pm-tabs" id="pmTabs"></div>
+    <div class="pm-stage"><button class="pm-nav pm-prev" id="pmPrev" aria-label="Previous image">‹</button><img id="pmImg" alt=""><button class="pm-nav pm-next" id="pmNext" aria-label="Next image">›</button></div>
+    <div class="pm-strip" id="pmStrip"></div>
+    <div class="lightbox-info">
+      <h3 id="pmTitle"></h3>
+      <p id="pmMeta"></p>
+      <div class="pm-links" id="pmLinks"></div>
+    </div>
+  </div>
+</div>
+
+<!-- Lightbox for certificate viewing -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-labelledby="lightboxTitle">
+  <div class="lightbox-panel">
+    <button class="lightbox-close" id="lightboxClose" aria-label="Close">✕</button>
+    <div id="lightboxMediaWrap"></div>
+    <div class="lightbox-info">
+      <h3 id="lightboxTitle"></h3>
+      <p id="lightboxMeta"></p>
+    </div>
+  </div>
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
