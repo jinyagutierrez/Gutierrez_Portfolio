@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="styles.css?v=3">
 <script>
   (function(){
     try {
@@ -39,33 +39,47 @@
       <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.6M12 18.9v2.6M4.2 4.2l1.8 1.8M18 18l1.8 1.8M2.5 12h2.6M18.9 12h2.6M4.2 19.8L6 18M18 6l1.8-1.8"/></svg>
       <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a6.8 6.8 0 0 0 10.5 10.5z"/></svg>
     </button>
+    <button type="button" class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+      <span></span><span></span><span></span>
+    </button>
   </nav>
+  <div class="mobile-menu" id="mobileMenu">
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#certifications">Certifications</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
 </header>
 
 <main id="top">
 
   <!-- HERO -->
   <section class="hero wrap" id="heroSection">
-    <div class="hero-spot" id="heroSpot" aria-hidden="true"></div>
     <div class="hero-grid">
-      <div class="hero-text">
-        <span class="kicker">Open to internships &amp; junior roles</span>
-        <h1 class="name">Jinya Marray Gutierrez</h1>
-        <p class="role-line" id="roleLine" aria-hidden="true"><span id="roleText"></span><span class="caret"></span></p>
-        <p class="lede">IT student at FEU Alabang building web and mobile products end to end — wireframes, interfaces, and the backend that runs them.</p>
-        <div class="hero-actions">
-          <a href="#projects" class="btn btn-fill magnetic">See my work</a>
-          <a href="#contact" class="btn btn-line magnetic">Get in touch</a>
-        </div>
-        <dl class="hero-stats">
-          <div><dt>8</dt><dd>Projects</dd></div>
-          <div><dt>9</dt><dd>Credentials</dd></div>
-          <div><dt>4th yr.</dt><dd>IT student</dd></div>
-        </dl>
-      </div>
       <div class="hero-photo">
         <img src="assets/jinya-portrait.jpg" alt="Portrait of Jinya Marray Gutierrez" width="480" height="480">
       </div>
+      <h1 class="name" aria-label="Jinya Marray Gutierrez"><span id="nameText" aria-hidden="true"></span><span class="name-caret" id="nameCaret" aria-hidden="true"></span></h1>
+      <p class="role-line" id="roleLine" aria-hidden="true"><span id="roleText"></span><span class="caret"></span></p>
+      <p class="lede">IT student at FEU Alabang building web and mobile products end to end — wireframes, interfaces, and the backend that runs them.</p>
+      <div class="hero-actions">
+        <a href="#projects" class="btn btn-fill">See my work</a>
+        <a href="#contact" class="btn btn-line">Get in touch</a>
+        <!-- Placeholder download: drop your resume file at assets/Jinya-Gutierrez-CV.pdf and this button will auto-download it -->
+        <a href="assets/Jinya-Gutierrez-CV.pdf" download="Jinya-Gutierrez-CV.pdf" class="btn btn-line btn-cv">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M12 3v12"/><path d="M7 10l5 5 5-5"/><path d="M4 19h16"/></svg>
+          Download CV
+        </a>
+      </div>
+      <dl class="hero-stats">
+        <div><dt>8</dt><dd>Projects</dd></div>
+        <div><dt>9</dt><dd>Credentials</dd></div>
+        <div><dt>4th yr.</dt><dd>IT student</dd></div>
+      </dl>
     </div>
   </section>
 
@@ -93,11 +107,11 @@
           </dl>
         </div>
 
-        <div class="card infocard">
+        <div class="card infocard infocard-involvement">
           <h3 class="card-label">Involvement</h3>
           <dl>
-            <dt>Organizations</dt><dd></dd>
-            <dd>Google Developer Student Clubs — Member, 2023–2026</dd><dd></dd>
+            <dt>Organizations</dt>
+            <dd>Google Developer Student Clubs — Member, 2023–2026</dd><dt></dt>
             <dd>Junior Philippine Computer Society — Member, 2026–Present</dd>
           </dl>
           <h4 class="card-sublabel">Outside of school</h4>
@@ -181,6 +195,11 @@
           <h3>Languages</h3>
           <div class="chips">
             <span class="chip">HTML &amp; CSS</span>
+            <span class="chip">JavaScript</span>
+            <span class="chip">Java</span>
+            <span class="chip">Kotlin</span>
+            <span class="chip">PHP</span>
+            <span class="chip">SQL</span>
           </div>
         </div>
         <div class="card skill-group">
@@ -293,7 +312,7 @@
   </div>
 </div>
 
-<script src="script.js"></script>
+<script src="script.js?v=3"></script>
 
 </body>
 </html>
