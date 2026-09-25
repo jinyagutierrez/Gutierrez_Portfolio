@@ -355,8 +355,9 @@
   }
 
   /* ---------- active nav link on scroll ---------- */
-  var links = document.querySelectorAll('.navlinks a');
-  var sections = Array.from(links).map(function(a){ return document.querySelector(a.getAttribute('href')); }).filter(Boolean);
+  var links = document.querySelectorAll('.navlinks a, .mobile-menu a');
+  var navSections = Array.from(document.querySelectorAll('.navlinks a')).map(function(a){ return document.querySelector(a.getAttribute('href')); }).filter(Boolean);
+  var sections = navSections;
   function updateActiveLink(){
     var y = window.scrollY + 110;
     var current = sections[0];
@@ -364,32 +365,59 @@
     links.forEach(function(a){ a.classList.toggle('active', a.getAttribute('href') === '#' + current.id); });
   }
 
+  /* ---------- mobile hamburger menu ---------- */
+  (function(){
+    var navToggle = document.getElementById('navToggle');
+    var mobileMenu = document.getElementById('mobileMenu');
+    if (!navToggle || !mobileMenu) return;
+
+    function closeMenu(){
+      mobileMenu.classList.remove('open');
+      navToggle.setAttribute('aria-expanded', 'false');
+      navToggle.setAttribute('aria-label', 'Open menu');
+    }
+    function openMenu(){
+      mobileMenu.classList.add('open');
+      navToggle.setAttribute('aria-expanded', 'true');
+      navToggle.setAttribute('aria-label', 'Close menu');
+    }
+
+    navToggle.addEventListener('click', function(){
+      var isOpen = mobileMenu.classList.contains('open');
+      if (isOpen) closeMenu(); else openMenu();
+    });
+    mobileMenu.querySelectorAll('a').forEach(function(a){
+      a.addEventListener('click', closeMenu);
+    });
+    window.addEventListener('resize', function(){
+      if (window.innerWidth > 640) closeMenu();
+    });
+  })();
+
   window.addEventListener('scroll', function(){ updateRuler(); updateActiveLink(); }, { passive:true });
   updateRuler(); updateActiveLink();
 
-  /* ---------- hero spotlight follows cursor ---------- */
-  var hero = document.getElementById('heroSection');
   var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var hasHover = window.matchMedia('(hover: hover)').matches;
-  if (hero && hasHover && !reduceMotion) {
-    hero.addEventListener('mousemove', function(e){
-      var r = hero.getBoundingClientRect();
-      hero.style.setProperty('--mx', (e.clientX - r.left) + 'px');
-      hero.style.setProperty('--my', (e.clientY - r.top) + 'px');
-    });
-  }
 
-  /* ---------- magnetic buttons ---------- */
-  if (hasHover && !reduceMotion) {
-    document.querySelectorAll('.magnetic').forEach(function(btn){
-      btn.addEventListener('mousemove', function(e){
-        var r = btn.getBoundingClientRect();
-        var x = (e.clientX - r.left - r.width / 2) * 0.25;
-        var y = (e.clientY - r.top - r.height / 2) * 0.4;
-        btn.style.transform = 'translate(' + x + 'px,' + y + 'px)';
-      });
-      btn.addEventListener('mouseleave', function(){ btn.style.transform = ''; });
-    });
+  /* ---------- typewriter name reveal ---------- */
+  var nameTextEl = document.getElementById('nameText');
+  var nameCaretEl = document.getElementById('nameCaret');
+  var fullName = "Jinya Marray Gutierrez";
+  if (nameTextEl) {
+    if (reduceMotion) {
+      nameTextEl.textContent = fullName;
+      if (nameCaretEl) nameCaretEl.style.display = 'none';
+    } else {
+      (function typeName(){
+        var i = 0;
+        function tick(){
+          i++;
+          nameTextEl.textContent = fullName.slice(0, i);
+          if (i < fullName.length) { setTimeout(tick, 55); }
+        }
+        tick();
+      })();
+    }
   }
 
   /* ---------- typewriter role cycler ---------- */
