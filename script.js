@@ -143,7 +143,7 @@
   var projects = [
     { title:"Game-Tight with Loctite", cat:"var(--amber)", glyph:"loctite/hackathon",
       desc:"Creator-led TikTok growth campaign pitch for Loctite Philippines, built for the Henkel Hackathon. Designed the Facebook and TikTok profile mockups.",
-      tags:["Canva","UI/UX","Social Campaign"], role:"UI/UX Mockup Designer",
+      tags:["UI/UX","Social Campaign"], role:"UI/UX Mockup Designer",
       groups:[{ label:"Profile mockups", dir:"projects/henkel_mockups/", files:["1.png","2.png"] }],
       links:[{ label:"Mockups on Drive", url:"https://drive.google.com/drive/folders/1fEtQkt8rva06B1-CvDpbBFAt2gvHbjyt?usp=sharing" }] },
 
@@ -196,8 +196,8 @@
       links:[{ label:"Wireframes on Drive", url:"https://drive.google.com/drive/folders/1FVWeohjJf_FZvAdS9hV5BhSUlGJ_BBRX?usp=sharing" }] },
 
     { title:"CON.SOUL — Basic Interface Design (IT0001)", cat:"var(--coral)", glyph:"con.soul/it0001",
-      desc:"Three brand mockups designed in Canva for the group's eyewear concept — business card, apparel, and product packaging.",
-      tags:["Canva","Branding","Mockups"], role:"Mockup Designer",
+      desc:"Three brand mockups designed in Adobe Illustrator for the group's eyewear concept — business card, apparel, and product packaging.",
+      tags:["Adobe Illustrator","Branding","Mockups"], role:"Mockup Designer",
       groups:[{ label:"Mockups", dir:"projects/consoul_mockups/", files:["mockup1.png","mockup2.png","mockup3.png"] }],
       links:[{ label:"Mockups on Drive", url:"https://drive.google.com/drive/folders/1cUprlsbA6MXwdqwVisH8Tg_9L4UcIiFP?usp=sharing" }] }
   ];
