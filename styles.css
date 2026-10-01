@@ -633,3 +633,21 @@
   .hero-actions .btn-cv{ gap:6px; padding:11px 14px; }
   .hero-actions .btn-cv svg{ width:14px; height:14px; }
 }
+
+/* experience photos */
+.term-photos{display:flex; flex-wrap:wrap; gap:10px; margin-top:16px;}
+.term-photo{
+  position:relative; width:148px; aspect-ratio:3/2; padding:0; border-radius:8px; overflow:hidden; cursor:pointer;
+  border:1px solid rgba(255,255,255,.14); background:rgba(255,255,255,.05);
+  transition:transform .15s ease, border-color .15s ease;
+}
+.term-photo img{width:100%; height:100%; object-fit:cover; display:block; transition:transform .3s ease;}
+.term-photo:hover, .term-photo:focus-visible{transform:translateY(-2px); border-color:var(--amber-soft, #E8A23A);}
+.term-photo:hover img{transform:scale(1.05);}
+.term-photo:focus-visible{outline:2px solid var(--amber-soft, #E8A23A); outline-offset:2px;}
+.term-photo-label{
+  position:absolute; left:0; right:0; bottom:0; padding:14px 8px 5px; text-align:left;
+  font-family:'IBM Plex Mono',monospace; font-size:.64rem; letter-spacing:.02em; color:#fff;
+  background:linear-gradient(transparent, rgba(0,0,0,.72));
+}
+@media (max-width:640px){ .term-photo{ width:calc(50% - 5px); } }
