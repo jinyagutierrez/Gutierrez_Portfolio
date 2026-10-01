@@ -14,7 +14,16 @@
     { title: "Dean's Bronze Certificate", issuer: "FEU Alabang, 1st Term S.Y. 2024–2025", date: "February 2025", src: "assets/Dean_s_Bronze_Certificate.png", category: "Academic" },
     { title: "Networking — IT Specialist Certification", issuer: "Certiport / CertNexus / Pearson VUE", date: "March 2025", src: "assets/Networking_Certification.png", category: "Technical" },
     { title: "Certificate of Membership", issuer: "Junior Philippine Computer Society (JPCS), FEU Alabang Chapter", date: "2026", src: "assets/JPCS_Certificate_of_Membership.jpg", category: "Organization" },
-    { title: "CyberOps Associate", issuer: "Cisco Networking Academy, FEU Alabang", date: "July 2026", src: "assets/Gutierrez_CyberOps_Associate_certificate_Gutierez.png", category: "Technical" }
+    { title: "CyberOps Associate", issuer: "Cisco Networking Academy, FEU Alabang", date: "July 2026", src: "assets/Gutierrez_CyberOps_Associate_certificate_Gutierez.png", category: "Technical" },
+    { title: "Henkel Philippines Hackathon — Loctite Reimagined", issuer: "Henkel Philippines, GBS+ Manila", date: "September 1–4, 2026", src: "assets/Certificate_of_Participation_Henkel_Hackathon_2026.png", category: "Event",
+      gallery: [
+        { src: "assets/Hackathon_Day3.png", caption: "Day 3 group photo with fellow participants, mentors, and Henkel organizers." },
+        { src: "assets/Team%206_Hackathinkers_1.png", caption: "Team 6 \u201CHackathinkers\u201D — ready for the Loctite Reimagined challenge." },
+        { src: "assets/Team%206_Hackathinkers_2.png", caption: "Team 6 with our Loctite Super Glue samples, the product we reimagined." },
+        { src: "assets/Team%206_Hackathinkers_3.png", caption: "Working session — building and refining our solution together." },
+        { src: "assets/Team%206_Hackathinkers_4.png", caption: "A Henkel mentor sharing product insights with our team." },
+        { src: "assets/Hackathinkers_3rdplace.png", caption: "Team 6 \u201CHackathinkers\u201D announced as Third Place, with the Henkel organizers." }
+      ] }
   ];
 
   var categoryColors = {
@@ -77,7 +86,8 @@
       if (cert.src && !isPdf(cert.src)) {
         thumbHTML = '<div class="cert-thumb"><img src="' + cert.src + '" alt="" loading="lazy" ' +
           'onerror="this.parentElement.innerHTML=\'' + certIconSVG.replace(/'/g,"\\'") + '\'">' +
-          '<div class="cert-overlay">' + eyeIconSVG + '<span>View certificate</span></div></div>';
+          '<div class="cert-overlay">' + eyeIconSVG + '<span>' + (cert.gallery ? 'View certificate &amp; photos' : 'View certificate') + '</span></div>' +
+          (cert.gallery ? '<span class="cert-photos-badge">+' + cert.gallery.length + ' photos</span>' : '') + '</div>';
       } else if (cert.src && isPdf(cert.src)) {
         thumbHTML = '<div class="cert-thumb">' + certIconSVG + '<div class="cert-overlay">' + eyeIconSVG + '<span>View certificate</span></div></div>';
       } else {
@@ -115,6 +125,37 @@
         'onerror="this.replaceWith(Object.assign(document.createElement(\'div\'),{className:\'lightbox-media\',style:\'display:flex;align-items:center;justify-content:center;color:#8891a0;font-family:IBM Plex Mono, monospace;font-size:.85rem;height:220px\',textContent:\'File not added yet — replace src in the certifications array\'}))">';
     } else {
       lightboxMediaWrap.innerHTML = '<div class="lightbox-media" style="display:flex;align-items:center;justify-content:center;color:#8891a0;font-family:\'IBM Plex Mono\',monospace;font-size:.85rem;height:220px">File not added yet — replace src in the certifications array</div>';
+    }
+
+    if (cert.gallery && cert.gallery.length && cert.src && !isPdf(cert.src)) {
+      var items = [{ src: cert.src, caption: 'Certificate of Participation', alt: cert.title }]
+        .concat(cert.gallery.map(function(g){ return { src: g.src, caption: g.caption, alt: g.caption }; }));
+      var cap = document.createElement('p');
+      cap.className = 'lightbox-caption';
+      cap.textContent = items[0].caption;
+      var strip = document.createElement('div');
+      strip.className = 'lightbox-gallery';
+      items.forEach(function(it, i){
+        var b = document.createElement('button');
+        b.type = 'button';
+        b.className = 'lb-thumb' + (i === 0 ? ' active' : '');
+        b.setAttribute('aria-label', it.caption);
+        b.innerHTML = '<img src="' + it.src + '" alt="" loading="lazy">';
+        b.addEventListener('click', function(){
+          var fresh = document.createElement('img');
+          fresh.className = 'lightbox-media';
+          fresh.alt = it.alt;
+          fresh.src = it.src;
+          var current = lightboxMediaWrap.firstElementChild;
+          if (current) current.replaceWith(fresh);
+          cap.textContent = it.caption;
+          strip.querySelectorAll('.lb-thumb').forEach(function(x){ x.classList.remove('active'); });
+          b.classList.add('active');
+        });
+        strip.appendChild(b);
+      });
+      lightboxMediaWrap.appendChild(strip);
+      lightboxMediaWrap.appendChild(cap);
     }
 
     lightbox.classList.add('open');
