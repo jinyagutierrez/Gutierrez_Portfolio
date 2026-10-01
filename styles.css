@@ -607,3 +607,29 @@
     .infocard{ padding:18px; }
     .skill-group{ padding:18px; }
   }
+
+/* certificate photo gallery */
+.cert-thumb{position:relative;}
+.cert-photos-badge{
+  position:absolute; top:10px; right:10px; padding:3px 9px; border-radius:999px;
+  background:var(--ink); color:var(--canvas); font-family:'IBM Plex Mono',monospace; font-size:.68rem; letter-spacing:.02em;
+}
+.lightbox-gallery{display:flex; gap:8px; padding:12px 22px 0; overflow-x:auto;}
+.lb-thumb{
+  flex:0 0 auto; width:84px; height:56px; padding:0; border:2px solid transparent; border-radius:6px;
+  overflow:hidden; cursor:pointer; background:none; opacity:.65; transition:opacity .2s, border-color .2s;
+}
+.lb-thumb img{width:100%; height:100%; object-fit:cover; display:block;}
+.lb-thumb:hover{opacity:1;}
+.lb-thumb.active{opacity:1; border-color:var(--accent, var(--coral));}
+.lightbox-caption{margin:10px 22px 0; font-size:.88rem; line-height:1.5; color:var(--ink); font-style:italic;}
+@media (max-width:640px){ .lightbox-gallery{padding:10px 18px 0;} .lightbox-caption{margin:8px 18px 0;} }
+
+
+/* compact hero buttons so all four fit on one row */
+@media (min-width:641px){
+  .hero-actions{ gap:10px; }
+  .hero-actions .btn{ padding:11px 16px; font-size:0.86rem; white-space:nowrap; }
+  .hero-actions .btn-cv{ gap:6px; padding:11px 14px; }
+  .hero-actions .btn-cv svg{ width:14px; height:14px; }
+}
