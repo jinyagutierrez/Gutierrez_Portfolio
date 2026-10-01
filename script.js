@@ -116,7 +116,7 @@
   function openLightbox(cert, trigger){
     lastFocused = trigger;
     lightboxTitle.textContent = cert.title;
-    lightboxMeta.innerHTML = cert.issuer + '<br>' + cert.date;
+    lightboxMeta.innerHTML = cert.date ? cert.issuer + '<br>' + cert.date : cert.issuer;
 
     if (cert.src && isPdf(cert.src)) {
       lightboxMediaWrap.innerHTML = '<embed class="lightbox-media embed" src="' + cert.src + '" type="application/pdf">';
@@ -128,7 +128,7 @@
     }
 
     if (cert.gallery && cert.gallery.length && cert.src && !isPdf(cert.src)) {
-      var items = [{ src: cert.src, caption: 'Certificate of Participation', alt: cert.title }]
+      var items = [{ src: cert.src, caption: cert.firstCaption || 'Certificate of Participation', alt: cert.title }]
         .concat(cert.gallery.map(function(g){ return { src: g.src, caption: g.caption, alt: g.caption }; }));
       var cap = document.createElement('p');
       cap.className = 'lightbox-caption';
@@ -176,6 +176,53 @@
 
   buildCertFilters();
   buildCertGrid();
+
+  /* =========================================================
+     EXPERIENCE PHOTOS
+     Shown under each entry in the Experience terminal; click to
+     open in the lightbox (multiple photos get a thumbnail strip).
+     ========================================================= */
+  var experiencePhotos = {
+    baylo: { title:"Baylo — Capstone Project", issuer:"Capstone Project Developer & Researcher", photos:[
+      { src:"assets/Baylo_Thesis_Defended.jpg", caption:"Thesis defense with the Baylo team and panel", label:"Thesis defense" },
+      { src:"assets/Baylo_Mobile_App.jpg", caption:"Baylo running on an Android device", label:"Baylo app", pos:"50% 55%" }
+    ]},
+    sproutify: { title:"Sproutify — Client Website", issuer:"WordPress & WooCommerce Developer", photos:[
+      { src:"assets/Sproutify_Website.jpg", caption:"Sproutify home page — WordPress/WooCommerce prototype", label:"Sproutify site" }
+    ]},
+    veeva: { title:"Veeva — Data Encoding", issuer:"Data Encoder (Freelance, Part-time)", photos:[
+      { src:"assets/Veeva_1st_work.jpg", caption:"Data encoding work setup", label:"Data encoding" }
+    ]},
+    cobb: { title:"Cobb Home — Administrative Training", issuer:"Administrative Trainee, LJB Corp — San Francisco, USA", photos:[
+      { src:"assets/Cobb_Me_at_work.jpg", caption:"On-site records and documentation work", label:"At work" },
+      { src:"assets/Cobb_Data_endcoding.jpg", caption:"Staff scheduling and daily temperature log records", label:"Records & logs" }
+    ]}
+  };
+
+  function buildExperiencePhotos(){
+    document.querySelectorAll('.term-photos[data-exp]').forEach(function(box){
+      var exp = experiencePhotos[box.getAttribute('data-exp')];
+      if (!exp) return;
+      exp.photos.forEach(function(p, i){
+        var b = document.createElement('button');
+        b.type = 'button';
+        b.className = 'term-photo';
+        b.setAttribute('aria-label', 'View photo: ' + p.caption);
+        b.innerHTML = '<img src="' + p.src + '" alt="' + esc(p.caption) + '" loading="lazy"' +
+          (p.pos ? ' style="object-position:' + p.pos + '"' : '') + '>' +
+          '<span class="term-photo-label">' + esc(p.label) + '</span>';
+        b.addEventListener('click', function(){
+          var rest = exp.photos.filter(function(_, j){ return j !== i; });
+          openLightbox({
+            title: exp.title, issuer: exp.issuer, date: '',
+            src: p.src, firstCaption: p.caption,
+            gallery: rest.map(function(r){ return { src: r.src, caption: r.caption }; })
+          }, b);
+        });
+        box.appendChild(b);
+      });
+    });
+  }
 
   /* =========================================================
      PROJECTS DATA
@@ -358,6 +405,7 @@
     else if (e.key === 'ArrowRight') pmStep(1);
   });
   buildProjects();
+  buildExperiencePhotos();
 
   /* ---------- light/dark theme toggle ---------- */
   (function(){
