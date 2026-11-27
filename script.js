@@ -14,7 +14,9 @@
     { title: "Dean's Bronze Certificate", issuer: "FEU Alabang, 1st Term S.Y. 2024–2025", date: "February 2025", src: "assets/Dean_s_Bronze_Certificate.png", category: "Academic" },
     { title: "Networking — IT Specialist Certification", issuer: "Certiport / CertNexus / Pearson VUE", date: "March 2025", src: "assets/Networking_Certification.png", category: "Technical" },
     { title: "Certificate of Membership", issuer: "Junior Philippine Computer Society (JPCS), FEU Alabang Chapter", date: "2026", src: "assets/JPCS_Certificate_of_Membership.jpg", category: "Organization" },
+    { title: "Certificate of Membership", issuer: "Junior Philippine Computer Society (JPCS), FEU Alabang Chapter, SY 2026–2027", date: "SY 2026–2027", src: "assets/Certificate%20of%20Membership%20of%20the%20JPCS%20SY%202026-2027.png", category: "Organization" },
     { title: "CyberOps Associate", issuer: "Cisco Networking Academy, FEU Alabang", date: "July 2026", src: "assets/Gutierrez_CyberOps_Associate_certificate_Gutierez.png", category: "Technical" },
+    { title: "Dean's Bronze Certificate", issuer: "FEU Alabang, 3rd Term S.Y. 2025–2026", date: "July 2026", src: "assets/3TSY2526%20CCSMA%20Dean%27s%20Lister%20(Bronze).png", category: "Academic" },
     { title: "Henkel Philippines Hackathon — Loctite Reimagined", issuer: "Henkel Philippines, GBS+ Manila", date: "September 1–4, 2026", src: "assets/Certificate_of_Participation_Henkel_Hackathon_2026.png", category: "Event",
       gallery: [
         { src: "assets/Hackathon_Day3.png", caption: "Day 3 group photo with fellow participants, mentors, and Henkel organizers." },
@@ -23,7 +25,10 @@
         { src: "assets/Team%206_Hackathinkers_3.png", caption: "Working session — building and refining our solution together." },
         { src: "assets/Team%206_Hackathinkers_4.png", caption: "A Henkel mentor sharing product insights with our team." },
         { src: "assets/Hackathinkers_3rdplace.png", caption: "Team 6 \u201CHackathinkers\u201D announced as Third Place, with the Henkel organizers." }
-      ] }
+      ] },
+    { title: "TRAILBLAZER: Imagining Tomorrow — On-site Seminar", issuer: "FEU Alabang, MPR – 2nd Floor", date: "November 5, 2026", src: "assets/Certificate%20of%20Participation%20-%20Trailblazer%20Onsite.png", category: "Event" },
+    { title: "TRAILBLAZER: Imagining Tomorrow — Webinar", issuer: "FEU Alabang, via Microsoft Teams", date: "November 6, 2026", src: "assets/Certificate%20of%20Participation%20-%20Trailblazer%20Webinar.png", category: "Event" },
+    { title: "Python — IT Specialist Certification", issuer: "Certiport / CertNexus / Pearson VUE", date: "November 2026", src: "assets/Python%20Certification.png", category: "Technical" }
   ];
 
   var categoryColors = {
@@ -84,8 +89,7 @@
 
       var thumbHTML;
       if (cert.src && !isPdf(cert.src)) {
-        thumbHTML = '<div class="cert-thumb"><img src="' + cert.src + '" alt="" loading="lazy" ' +
-          'onerror="this.parentElement.innerHTML=\'' + certIconSVG.replace(/'/g,"\\'") + '\'">' +
+        thumbHTML = '<div class="cert-thumb"><img src="' + cert.src + '" alt="" loading="lazy">' +
           '<div class="cert-overlay">' + eyeIconSVG + '<span>' + (cert.gallery ? 'View certificate &amp; photos' : 'View certificate') + '</span></div>' +
           (cert.gallery ? '<span class="cert-photos-badge">+' + cert.gallery.length + ' photos</span>' : '') + '</div>';
       } else if (cert.src && isPdf(cert.src)) {
@@ -101,6 +105,9 @@
           '<p class="cert-meta">' + cert.issuer + '</p>' +
           '<p class="cert-date">' + cert.date + '</p>' +
         '</div>';
+
+      var thumbImg = card.querySelector('.cert-thumb img');
+      if (thumbImg) thumbImg.addEventListener('error', function(){ thumbImg.parentElement.innerHTML = certIconSVG; });
 
       card.addEventListener('click', function(){ openLightbox(cert, card); });
       grid.appendChild(card);
